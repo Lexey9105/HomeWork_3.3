@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class FacultyServiceImpl implements FacultyService {
 
    private final FacultyRepository facultyRepository;
-    @Autowired
+@Autowired
     public FacultyServiceImpl(FacultyRepository facultyRepository) {
 
         this.facultyRepository = facultyRepository;
@@ -62,9 +62,7 @@ public class FacultyServiceImpl implements FacultyService {
         return facultyRepository.findAll();
     }
     @Override
-    public Collection<Faculty> facFilter(String color) {
-        return facultyRepository.findAll().stream()
-                .filter(e -> e.getColor().equals(color))
-                .collect(Collectors.toList());
+    public Collection<Faculty> getByColorOrName(String name, String color) {
+        return facultyRepository.findFacultiesByNameIgnoreCaseOrColorIgnoreCase( name,  color);
     }
 }

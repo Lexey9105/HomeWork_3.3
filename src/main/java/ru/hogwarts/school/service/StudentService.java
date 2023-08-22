@@ -12,5 +12,5 @@ public interface StudentService {
     Student getStudent(Long id);
     Student deleteStudent(Long id);
      Collection<Student> findAll();
-   Collection<Student> studFilter(int age);
+   Collection<Student> getByAge(int startAge,int finalAge);
 }

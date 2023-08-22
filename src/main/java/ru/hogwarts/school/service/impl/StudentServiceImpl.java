@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
         Optional<Student> student= studentRepository.findById(id);
         if(student.isPresent()){
             return student.get();}
-        else {throw new EntityNotFoundException("факульттет с "+id+"id не существует");
+        else {throw new EntityNotFoundException("Студент с "+id+"id не существует");
         }
     }
 
@@ -57,10 +57,8 @@ public Collection<Student> findAll(){
         return studentRepository.findAll();
 }
     @Override
-    public Collection<Student> studFilter(int age) {
+    public Collection<Student> getByAge(int startAge,int finalAge) {
 
-        return studentRepository.findAll().stream()
-                .filter(e -> e.getAge() == age)
-                .collect(Collectors.toList());
+        return studentRepository.findStudentsByAgeBetween( startAge, finalAge);
     }
 }

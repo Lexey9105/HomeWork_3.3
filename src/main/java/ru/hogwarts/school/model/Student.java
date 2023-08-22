@@ -15,6 +15,7 @@ public class Student {
 
 @ManyToOne
     @JoinColumn(name="id_faculty")
+@JsonBackReference
     private Faculty faculty;
 
     public Student (){

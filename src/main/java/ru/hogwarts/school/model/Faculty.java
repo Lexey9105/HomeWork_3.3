@@ -14,6 +14,7 @@ public class Faculty {
     private String name;
     private String color;
     @OneToMany(mappedBy = "faculty")
+    @JsonManagedReference
     private List<Student> students;
 
     public Faculty() {

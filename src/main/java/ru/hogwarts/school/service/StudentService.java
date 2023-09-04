@@ -16,7 +16,5 @@ public interface StudentService {
     Student deleteStudent(Long id);
      Collection<Student> findAll();
    Collection<Student> getByAge(int startAge,int finalAge);
-    Avatar findAvatar(Long studentId);
-     String getExtension(String fileName);
-    void uploadAvatar(Long id, MultipartFile file) throws IOException;
+
 }

@@ -1,31 +1,24 @@
 package ru.hogwarts.school.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
-
 
 import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
 public class Avatar {
-    public Avatar() {
-    }
     @Id
     @GeneratedValue
     private Long id;
-    @JsonIgnore
     private String filePath;
     private long fileSize;
     private String mediaType;
     @Lob
-    @Type(type = "org.hibernate.type.BinaryType")
-    @JsonIgnore
     private byte[] data;
-    @JsonIgnore
     @OneToOne
     private Student student;
+
+    public Avatar() {
+    }
 
     public Long getId() {
         return id;
@@ -80,11 +73,7 @@ public class Avatar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Avatar avatar = (Avatar) o;
-        return fileSize == avatar.fileSize
-                && Objects.equals(id, avatar.id)
-                && Objects.equals(filePath, avatar.filePath)
-                && Objects.equals(mediaType, avatar.mediaType) && Arrays.equals(data, avatar.data)
-                && Objects.equals(student, avatar.student);
+        return fileSize == avatar.fileSize && Objects.equals(id, avatar.id) && Objects.equals(filePath, avatar.filePath) && Objects.equals(mediaType, avatar.mediaType) && Arrays.equals(data, avatar.data) && Objects.equals(student, avatar.student);
     }
 
     @Override
@@ -92,17 +81,5 @@ public class Avatar {
         int result = Objects.hash(id, filePath, fileSize, mediaType, student);
         result = 31 * result + Arrays.hashCode(data);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Avatar{" +
-                "id=" + id +
-                ", filePath='" + filePath + '\'' +
-                ", fileSize=" + fileSize +
-                ", mediaType='" + mediaType + '\'' +
-                ", data=" + Arrays.toString(data) +
-                ", student=" + student +
-                '}';
     }
 }

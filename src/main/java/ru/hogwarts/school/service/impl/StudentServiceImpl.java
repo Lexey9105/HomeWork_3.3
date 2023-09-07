@@ -72,7 +72,18 @@ public Collection<Student> findAll(){
 
         return studentRepository.findStudentsByAgeBetween( startAge, finalAge);
     }
-
+    @Override
+    public Object TotalStudentsById(){
+        return  studentRepository.getTotalStudentsById();
+    }
+    @Override
+    public Object AVGStudentsByAge(){
+        return studentRepository.getAVGStudentsByAge();
+    }
+    @Override
+   public Collection<Student> LastStudents(){
+        return studentRepository.getLastStudents();
+   }
 
 
 

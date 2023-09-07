@@ -78,6 +78,17 @@ public class StudentController {
        Faculty faculty=studentService.getStudent(idStudent).getFaculty();
         return ResponseEntity.ok(faculty);
     }
-
+@GetMapping("/total")
+    public ResponseEntity<Object> getTotalStudentsById(){
+        return  ResponseEntity.ok(studentService.TotalStudentsById());
+    }
+    @GetMapping("/avg")
+    public ResponseEntity<Object> getAVGStudentsByAge(){
+        return ResponseEntity.ok(studentService.AVGStudentsByAge());
+    }
+    @GetMapping("/last")
+    public ResponseEntity<Collection<Student>> getLastStudents(){
+        return ResponseEntity.ok(studentService.LastStudents());
+    }
 
 }

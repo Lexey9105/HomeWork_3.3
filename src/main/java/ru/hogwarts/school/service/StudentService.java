@@ -1,16 +1,22 @@
 package ru.hogwarts.school.service;
 
 
+import org.springframework.web.multipart.MultipartFile;
+import ru.hogwarts.school.model.Avatar;
 import ru.hogwarts.school.model.Student;
 
+import java.io.IOException;
 import java.util.Collection;
 
 public interface StudentService {
 
     Student createStudent(Student student);
-    Student updateStudent(Long id, Student student);
+    Student updateStudent( Student student);
     Student getStudent(Long id);
     Student deleteStudent(Long id);
      Collection<Student> findAll();
-   Collection<Student> studFilter(int age);
+   Collection<Student> getByAge(int startAge,int finalAge);
+    Avatar findAvatar(Long studentId);
+     String getExtension(String fileName);
+    void uploadAvatar(Long id, MultipartFile file) throws IOException;
 }

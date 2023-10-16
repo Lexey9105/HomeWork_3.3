@@ -8,7 +8,7 @@ import java.util.Collection;
 public interface StudentService {
 
     Student createStudent(Student student);
-    Student updateStudent(Long id, Student student);
+    Student updateStudent( Student student);
     Student getStudent(Long id);
     Student deleteStudent(Long id);
      Collection<Student> findAll();
